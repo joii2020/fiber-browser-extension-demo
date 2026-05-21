@@ -1,0 +1,19 @@
+{
+  "name": "fiber-ext-demo",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "prepare": "wxt prepare",
+    "dev": "wxt",
+    "build": "wxt build",
+    "compile": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@nervosnetwork/fiber-js": "file:../fiber/fiber-js"
+  },
+  "devDependencies": {
+    "typescript": "^5.9.3",
+    "wxt": "^0.19.16"
+  }
+}
