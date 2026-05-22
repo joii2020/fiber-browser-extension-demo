@@ -1,38 +1,201 @@
 html,
 body {
   margin: 0;
-  min-width: 280px;
   background: #ffffff;
   color: #111111;
   font: 14px/1.4 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
+:root {
+  --popup-width: 386px;
+}
+
 body {
+  box-sizing: border-box;
   display: grid;
   gap: 10px;
+  width: var(--popup-width);
   padding: 12px;
 }
 
-button {
-  appearance: none;
-  border: 1px solid #111111;
-  background: #111111;
-  color: #ffffff;
-  border-radius: 4px;
-  min-height: 36px;
-  font: inherit;
+.status-card {
+  box-sizing: border-box;
+  display: grid;
+  gap: 8px;
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #d7dde5;
+  border-radius: 8px;
+  background: #f8fafc;
+}
+
+.status-card__header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.status-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: #f59e0b;
+  box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.16);
+}
+
+.status-card[data-state="running"] .status-dot {
+  background: #16a34a;
+  box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.16);
+}
+
+.status-card[data-state="error"] .status-dot {
+  background: #dc2626;
+  box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.16);
+}
+
+.status-refresh-button {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  margin-left: auto;
+  padding: 0;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  background: #ffffff;
+  color: #475569;
   cursor: pointer;
 }
 
-button:disabled {
-  cursor: default;
-  opacity: 0.55;
+.status-card[data-state="running"] .status-refresh-button {
+  display: inline-flex;
+}
+
+.status-refresh-button:hover:not(:disabled) {
+  border-color: #94a3b8;
+  color: #0f172a;
+}
+
+.status-refresh-button:focus-visible {
+  outline: 2px solid rgba(37, 99, 235, 0.24);
+  outline-offset: 1px;
+}
+
+.status-refresh-button:disabled {
+  color: #94a3b8;
+  cursor: not-allowed;
+}
+
+.status-refresh-button svg {
+  width: 14px;
+  height: 14px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2;
+}
+
+.status-refresh-button[data-pending] svg {
+  animation: refresh-spin 0.7s linear infinite;
+}
+
+.status-label {
+  color: #475569;
+  font-size: 12px;
+  font-weight: 650;
+  text-transform: uppercase;
+}
+
+@keyframes refresh-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.node-name {
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.node-pubkey {
+  overflow-wrap: anywhere;
+  color: #475569;
+  font: 12px/1.45 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+.status-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.status-grid div {
+  display: grid;
+  gap: 2px;
+  padding-top: 8px;
+  border-top: 1px solid #e2e8f0;
+}
+
+.status-grid span {
+  color: #64748b;
+  font-size: 12px;
+}
+
+.status-grid strong {
+  color: #0f172a;
+  font-size: 13px;
+}
+
+.peer-connect {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 8px;
+  width: 100%;
+}
+
+.peer-connect__input {
+  min-width: 0;
+  height: 34px;
+  box-sizing: border-box;
+  padding: 0 10px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  background: #ffffff;
+  color: #111111;
+  font: inherit;
+}
+
+.peer-connect__input:focus {
+  border-color: #2563eb;
+  outline: 2px solid rgba(37, 99, 235, 0.18);
+  outline-offset: 0;
+}
+
+.peer-connect__button {
+  height: 34px;
+  padding: 0 12px;
+  border: 1px solid #1d4ed8;
+  border-radius: 6px;
+  background: #2563eb;
+  color: #ffffff;
+  font: inherit;
+  font-weight: 650;
+  cursor: pointer;
+}
+
+.peer-connect__button:disabled {
+  border-color: #cbd5e1;
+  background: #e2e8f0;
+  color: #64748b;
+  cursor: not-allowed;
 }
 
 pre {
   margin: 0;
   min-height: 72px;
-  max-width: 360px;
+  width: 100%;
   white-space: pre-wrap;
   word-break: break-word;
   font: 12px/1.45 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;

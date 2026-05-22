@@ -10,7 +10,7 @@
     "compile": "tsc --noEmit"
   },
   "dependencies": {
-    "@nervosnetwork/fiber-js": "file:../fiber/fiber-js"
+    "@nervosnetwork/fiber-js": "0.9.0-rc1"
   },
   "devDependencies": {
     "typescript": "^5.9.3",

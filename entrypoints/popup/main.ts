@@ -1,2 +1,2 @@
 import "./style.css";
-import "../../src/popup";
+import "../../src/popup/index";
