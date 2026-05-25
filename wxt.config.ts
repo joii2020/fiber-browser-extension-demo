@@ -4,7 +4,6 @@ import { createRequire } from "node:module";
 import { fileURLToPath } from "node:url";
 import { defineConfig } from "wxt";
 
-const root = path.dirname(fileURLToPath(import.meta.url));
 const require = createRequire(import.meta.url);
 const requireFiberJsWasmAssets = process.env.FIBER_JS_REQUIRE_WASM_ASSETS === "true";
 
@@ -62,7 +61,6 @@ export default defineConfig({
       default_title: "Fiber WASM Demo"
     },
     permissions: ["offscreen"],
-    host_permissions: ["https://testnet.ckbapp.dev/*"],
     content_security_policy: {
       extension_pages: "script-src 'self' 'wasm-unsafe-eval'; worker-src 'self'; object-src 'self';"
     },
