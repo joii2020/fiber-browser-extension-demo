@@ -9,5 +9,5 @@
     "lib": ["DOM", "ES2022"],
     "skipLibCheck": true
   },
-  "include": ["entrypoints/**/*.ts", "src/**/*.ts", "wxt.config.ts"]
+  "include": ["entrypoints/**/*.ts", "src/**/*.ts", "wxt.config.ts", "env.d.ts"]
 }
