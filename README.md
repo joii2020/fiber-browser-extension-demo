@@ -74,6 +74,15 @@ To load the demo:
 The popup should show `Starting offscreen Fiber runtime...` while
 `fiber.start()` is running and `Success` after startup completes.
 
+To test Connect, use one of these peer addresses from
+[`fiber-js/README.md`](https://github.com/nervosnetwork/fiber/blob/develop/fiber-js/README.md):
+
+```text
+/dns4/thrall.fiber.channel/tcp/443/wss/p2p/Qmes1EBD4yNo9Ywkfe6eRw9tG1nVNGLDmMud1xJMsoYFKy
+or
+/dns4/onyxia.fiber.channel/tcp/443/wss/p2p/QmdyQWjPtbK4NWWsvy8s69NGJaQULwgeQDT5ZpNDrTNaeV
+```
+
 ## Runtime Notes
 
 The popup asks the background service worker to create `offscreen.html`, then
